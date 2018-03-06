@@ -4,7 +4,7 @@
 
 <script>
   export default {
-    name: "machines-map.vue",
+    name: "machines-map",
 
   }
 </script>

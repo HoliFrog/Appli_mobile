@@ -4,7 +4,7 @@
 
 <script>
     export default {
-        name: "machines-list.vue"
+        name: "machines-list"
     }
 </script>
 
