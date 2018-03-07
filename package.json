@@ -10,8 +10,10 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+    "require-vuejs": "^1.1.0",
     "vue": "^2.5.11",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue2-google-maps": "^0.8.10"
   },
   "browserslist": [
     "> 1%",

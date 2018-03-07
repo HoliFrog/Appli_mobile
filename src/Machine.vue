@@ -29,7 +29,7 @@
 
 <style scoped>
   div {
-    border: medium;
+    border: solid medium;
   }
   .red {
     color: mediumvioletred;

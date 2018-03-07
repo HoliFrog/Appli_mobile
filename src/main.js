@@ -9,6 +9,12 @@ import OneMachine from "./Machine.vue"
 Vue.component('Map',Map)
 Vue.component('List',List)
 Vue.component('MachineAlone', OneMachine)
+import * as VueGoogleMaps from 'vue2-google-maps'
+Vue.use(VueGoogleMaps, {
+  load: {
+   key: require('../api.json').key
+  }
+})
 
 Vue.use(VueRouter)
 
