@@ -1,7 +1,8 @@
 <template>
   <div>
     <h1>Liste des machines</h1>
-    <MachineAlone v-for="machine in machines"
+    <MachineAlone
+      v-for="machine in machines"
     :key="machine.id"
     v-bind:machineData="machine">
 
@@ -19,11 +20,13 @@
           name: 'Good Machine',
           status: true,
           checkedAt: new Date()
+
         }, {
           id: 2,
           name: 'Machine in burn out',
           status:false,
           checkedAt: new Date()
+
         }]
       }
     },
