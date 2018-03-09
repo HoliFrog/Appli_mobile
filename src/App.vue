@@ -8,34 +8,35 @@
       <!-- utilisez le composant router-link pour la navigation. -->
       <!-- spécifiez le lien en le passant à la prop `to` -->
       <!-- `<router-link>` sera rendu en tag `<a>` par défaut -->
-      <router-link to="/ListMachines">La liste ici</router-link>
+      <router-link to="/ListMachines">
+       La liste ici
+      </router-link>
+
       <router-link to="/Map">La carte ici</router-link>
-      <router-link to="/Machine">La machine ici</router-link>
+      <router-link to="/CreateMachine">La création ici</router-link>
+
     </p>
     <!-- balise pour le composant router-view -->
     <!-- le composant correspondant à la route sera rendu ici -->
-    <div>
-      <button @click="onMachinesListClick">affiche moi un message d'alerte , merci</button>
-    </div>
-    <router-view  v-bind:machineDataMap="machines"
-                  v-bind:machineDataList="machines"
+
+    <router-view v-bind:machineDataMap="machines"
+                 v-bind:machineDataList="machines"
     />
 
-    <div>
-      <button @click="onMapClick">affiche moi la carte, merci</button>
 
-
-    </div>
   </div>
 </template>
 
 <script>
+
+
   import Axios from 'axios'
 
   export default {
     name: 'app',
     data() {
       return {
+
         machines: [{}],
         loading: false,
         error: null,
@@ -51,6 +52,8 @@
           console.log(response);
           this.error = null;
           this.machines = response.data;
+          // this.selected = response.data;
+
 
         })
         .catch((error) => {

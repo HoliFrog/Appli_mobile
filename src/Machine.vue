@@ -20,9 +20,9 @@
     props: [
       'machineData'
     ],
-    data() {
-      return {}
-    },
+    // data() {
+    //   return {}
+    // },
 
   }
 </script>
