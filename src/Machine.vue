@@ -8,8 +8,8 @@
 
     <h1>Machine {{machineData.name}}</h1>
     <h2>Dernière vérification : {{machineData.checkedAt.toLocaleString()}}</h2>
-    <h3 class="green" v-if="machineData.status">Status OK</h3>
-    <h3 class="red" v-if="!machineData.status">Status KO</h3>
+    <h3 class="green" v-if="machineData.status==='true'">Status OK</h3>
+    <h3 class="red" v-else>Status KO</h3>
 
   </div>
 </template>

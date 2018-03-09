@@ -9,12 +9,11 @@
         >
           <gmap-marker
             :key="index"
-            v-for="(m, index) in machines"
-            :position="{lat:m.latitude, lng:m.longitude}"
+            v-for="(m, index) in machineDataMap"
+            :position="{lat:Number(m.latitude), lng:Number(m.longitude)}"
             :clickable="true"
-            :draggable="true"
             @click="center=m.position"
-          >lj</gmap-marker>
+          />
 
         </gmap-map>
       <!--</div>-->
@@ -24,24 +23,19 @@
 </template>
 
 <script>
-  export default {
 
+  export default {
+    props: [
+      'machineDataMap'
+    ],
     name: "machines-map",
     data() {
       return {
         center: {lat: 10.0, lng: 10.0},
-        machines: [{
-          id: 1,
-          latitude: 10,
-          longitude: 10,
-        },
-          {
-            id: 2,
-            latitude: 11,
-            longitude: 9.6,
-          }]
+
       }
     },
+
   }
 
 </script>

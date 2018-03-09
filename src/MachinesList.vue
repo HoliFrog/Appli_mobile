@@ -1,35 +1,32 @@
 <template>
   <div>
     <h1>Liste des machines</h1>
+
     <MachineAlone
-      v-for="machine in machines"
-    :key="machine.id"
-    v-bind:machineData="machine">
+
+      v-for="machine in machineDataList"
+      :key="machine.id"
+      v-bind:machineData="machine">
 
     </MachineAlone>
   </div>
 </template>
 
 <script>
+
+  import Axios from "axios"
+
   export default {
+    props: [
+      'machineDataList'
+    ],
     name: "machines-list",
     data() {
       return {
-        machines: [{
-          id: 1,
-          name: 'Good Machine',
-          status: true,
-          checkedAt: new Date()
 
-        }, {
-          id: 2,
-          name: 'Machine in burn out',
-          status:false,
-          checkedAt: new Date()
-
-        }]
       }
     },
+
   }
 </script>
 

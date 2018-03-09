@@ -2,7 +2,8 @@
   <div id="app">
     <img src="./assets/images.png">
     <h1>{{ msg }}</h1>
-
+    <h2 v-if="loading != false">chargeeeeeeezz!!!</h2>
+    <h2 v-if="error != null">{{error}}</h2>
     <p>
       <!-- utilisez le composant router-link pour la navigation. -->
       <!-- spécifiez le lien en le passant à la prop `to` -->
@@ -16,33 +17,48 @@
     <div>
       <button @click="onMachinesListClick">affiche moi un message d'alerte , merci</button>
     </div>
-    <router-view></router-view>
+    <router-view  v-bind:machineDataMap="machines"
+                  v-bind:machineDataList="machines"
+    />
 
     <div>
       <button @click="onMapClick">affiche moi la carte, merci</button>
 
-      <div v-if="img.show">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRwu0xIO9bn5T1ItgbobQH-0QkKuszmNJSfBxfkyv08YrsDohknQ"
-          alt="carte">
-      </div>
+
     </div>
   </div>
 </template>
 
 <script>
+  import Axios from 'axios'
+
   export default {
     name: 'app',
     data() {
       return {
-
+        machines: [{}],
+        loading: false,
+        error: null,
         img: {
           show: true
         },
         msg: 'Welcome to Your Vue.js App'
       }
     },
+    created: function () {
+      Axios.get('https://machine-api-campus.herokuapp.com/api/machines')
+        .then((response) => {
+          console.log(response);
+          this.error = null;
+          this.machines = response.data;
 
+        })
+        .catch((error) => {
+          console.log(error);
+          this.error = error;
+        });
+
+    },
     methods: {
       onMachinesListClick: function () {
         window.alert('vous êts bien sur la listes des machines!!')
@@ -63,17 +79,21 @@
     color: #2c3e50;
     margin-top: 60px;
   }
+
   h1, h2 {
     font-weight: normal;
   }
+
   ul {
     list-style-type: none;
     padding: 0;
   }
+
   li {
     display: inline-block;
     margin: 0 10px;
   }
+
   a {
     color: #42b983;
   }
